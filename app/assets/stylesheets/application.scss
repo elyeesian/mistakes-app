@@ -1,1 +1,52 @@
 @import 'bootstrap';
+
+body {
+    background-color: #292E1E;
+    color: #D0D6B5;
+    
+    a {
+        color: #FF2E00;
+    }
+
+    a:hover {
+        color: #A31E00;
+    } 
+
+}
+
+.navbar {
+    background-color: #FF2E00;
+
+    a, a:visited {
+        color: #292E1E;
+    }
+    a:hover {
+        color: #D0D6B5;
+    } 
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.table-contain {
+    padding: 3% 0%;
+}
+
+td {
+    border-style: none;
+}
+
+.table {
+    color: #D0D6B5;
+    --bs-table-striped-color: #D0D6B5;
+}
+
+label {
+    color: #4D5738;
+}
+input {
+    background-color: #161910;
+    margin: 1%;
+}
+
