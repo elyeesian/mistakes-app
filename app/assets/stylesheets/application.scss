@@ -3,16 +3,33 @@
 body {
     background-color: #292E1E;
     color: #D0D6B5;
-    
+
     a {
         color: #FF2E00;
+        text-decoration: none;
     }
 
     a:hover {
-        color: #A31E00;
-    } 
+        color: #292E1E;
+    }
 
 }
+
+.btn {
+    border-radius: 20px;
+    color: #FF2E00;
+    margin: 2% 0%;
+    border-color: #FF2E00;
+}
+
+.btn:hover {
+    background-color: #FF2E00;
+    color: #292E1E;
+    a {
+        color: #292E1E;
+    }
+}
+
 
 .navbar {
     background-color: #FF2E00;
@@ -45,8 +62,10 @@ td {
 label {
     color: #4D5738;
 }
-input {
-    background-color: #161910;
-    margin: 1%;
+
+.form-contain {
+    margin-top: 3%;
+    margin-bottom: 3%;
 }
+
 

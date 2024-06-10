@@ -4,6 +4,10 @@ class MistakesController < ApplicationController
   # GET /mistakes or /mistakes.json
   def index
     @mistakes = Mistake.all
+    respond_to do |format|
+      format.html
+      format.json { render json: MistakesDatatable.new(view_context) }
+    end
   end
 
   # GET /mistakes/1 or /mistakes/1.json
@@ -23,8 +27,12 @@ class MistakesController < ApplicationController
   def create
     @mistake = Mistake.new(mistake_params)
 
+    debugger
     respond_to do |format|
       if @mistake.save
+        # set the mistake_id after mistake's creation
+        mistake_id = @mistake.id
+        UserMistake.last.update_attribute(mistake_id: mistake_id)
         format.html { redirect_to mistake_url(@mistake), notice: "Mistake was successfully created." }
         format.json { render :show, status: :created, location: @mistake }
       else
@@ -65,6 +73,6 @@ class MistakesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def mistake_params
-      params.fetch(:mistake, {})
+      params.require(:mistake).permit(:name, :description, :severity)
     end
 end

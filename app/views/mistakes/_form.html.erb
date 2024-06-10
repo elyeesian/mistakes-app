@@ -1,17 +1,44 @@
-<%= form_with(model: mistake) do |form| %>
-  <% if mistake.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(mistake.errors.count, "error") %> prohibited this mistake from being saved:</h2>
-
-      <ul>
-        <% mistake.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+<div class="container">
+  <%= form_with(model: mistake) do |form| %>
+    <% if mistake.errors.any? %>
+      <div style="color: red">
+        <ul>
+          <% mistake.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <div class="row">
+      <div class="col-sm-4">
+        <%= form.label "Type of Error:", class: "form-label"%>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <%= form.label "Severity of Error:", class: "form-label" %>
+        <%= form.text_field :severity, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <%= form.label "Write a small description:", class: "form-label" %>
+        <%= form.text_field :description, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <%= fields_for :user_mistake do |user_mistake_form| %>
+          <%= user_mistake_form.hidden_field :mistake_id, value: 0 %>
+          <%= user_mistake_form.label "Enter user who made the mistake:", class: "form-label" %>
+          <%= user_mistake_form.collection_select :user_id, User.all, :id, :name, prompt: true %>
         <% end %>
-      </ul>
+      </div>
+    </div>
+    <div>
+    <%= form.submit "Create Mistake", class: "btn btn-outline-danger"%>
     </div>
   <% end %>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
