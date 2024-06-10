@@ -14,7 +14,7 @@ class MistakesDatatable < Datatable
       mistakes.map do |mistake|
         [
           mistake.id,
-          mistake.name,
+          link_to(mistake.name, "/mistakes/#{mistake.id}"),
           mistake.severity, 
           mistake.created_at,
           mistake.description

@@ -1,10 +1,29 @@
-<p style="color: green"><%= notice %></p>
+<div class="container table-contain">
+  <p style="color: #75B9BE"><%= notice %></p>
 
-<%= render @mistake %>
+  <%= render @mistake %>
 
-<div>
-  <%= link_to "Edit this mistake", edit_mistake_path(@mistake) %> |
-  <%= link_to "Back to mistakes", mistakes_path %>
+  <h1><%= @mistake.name %></h1>
+  <table class="table table-striped">
+    <tbody>
+      <tr>
+        <th scope="row">#</th>
+        <td><%= @mistake.id %></td>
+      </tr>
+      <tr>
+        <th scope="row">Severity</th>
+        <td><%= @mistake.severity %></td>
+      </tr>
+      <tr>
+        <th scope="row">About</th>
+        <td><%= @mistake.description %></td>
+      </tr>
+    </tbody>
+  </table>
 
-  <%= button_to "Destroy this mistake", @mistake, method: :delete %>
+  
+    <button class='btn btn-outline-danger'><%= link_to "Edit", edit_mistake_path(@mistake) %></button>
+    <button class='btn btn-outline-danger'> <%= link_to 'Delete', mistake_path(@mistake), 
+    data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %></button>
+
 </div>

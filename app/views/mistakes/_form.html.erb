@@ -1,4 +1,4 @@
-<div class="container">
+
   <%= form_with(model: mistake) do |form| %>
     <% if mistake.errors.any? %>
       <div style="color: red">
@@ -28,17 +28,9 @@
         <%= form.text_field :description, class: "form-control" %>
       </div>
     </div>
-    <div class="row">
-      <div class="col-sm-4">
-        <%= fields_for :user_mistake do |user_mistake_form| %>
-          <%= user_mistake_form.hidden_field :mistake_id, value: 0 %>
-          <%= user_mistake_form.label "Enter user who made the mistake:", class: "form-label" %>
-          <%= user_mistake_form.collection_select :user_id, User.all, :id, :name, prompt: true %>
-        <% end %>
-      </div>
-    </div>
+    
     <div>
-    <%= form.submit "Create Mistake", class: "btn btn-outline-danger"%>
+    <%= form.submit "Submit", class: "btn btn-outline-danger"%>
+    <button class="btn btn-outline-danger"><%= link_to "Cancel", mistakes_path %></button>
     </div>
   <% end %>
-</div>

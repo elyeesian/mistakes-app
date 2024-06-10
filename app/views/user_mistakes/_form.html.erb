@@ -1,0 +1,25 @@
+<%= form_with(model: user_mistake) do |form| %>
+  <% if user_mistake.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(user_mistake.errors.count, "error") %> prohibited this user_mistake from being saved:</h2>
+
+      <ul>
+        <% user_mistake.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+      <div class="col-sm-4">
+        <%= form.label "Select a User:", class: "form-label"%>
+        <%= form.collection_select :user_id, User.all, :id, :name, class: "form-control" %>
+        <%= form.label "Select an Error:", class: "form-label"%>
+        <%= form.collection_select :mistake_id, Mistake.all, :id, :name, class: "form-control" %>
+      </div>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

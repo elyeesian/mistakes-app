@@ -27,7 +27,6 @@ class MistakesController < ApplicationController
   def create
     @mistake = Mistake.new(mistake_params)
 
-    debugger
     respond_to do |format|
       if @mistake.save
         # set the mistake_id after mistake's creation

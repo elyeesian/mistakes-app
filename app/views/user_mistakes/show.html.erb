@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @user_mistake %>
+
+<div>
+  <%= link_to "Edit this user mistake", edit_user_mistake_path(@user_mistake) %> |
+  <%= link_to "Back to user mistakes", user_mistakes_path %>
+
+  <%= button_to "Destroy this user mistake", @user_mistake, method: :delete %>
+</div>

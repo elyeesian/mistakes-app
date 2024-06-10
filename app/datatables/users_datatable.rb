@@ -15,7 +15,7 @@ class UsersDatatable < Datatable
         [
           user.id,
           user.email,
-          user.name, 
+          link_to(user.name, "users/#{user.id}"),
           user.created_at,
           user.mistakes.count
         ]
