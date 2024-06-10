@@ -1,14 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<div class="container table-contain">
+  <p style="color: #75B9BE"><%= notice %></p>
 
-<h1>User mistakes</h1>
+  <h1>Master Table</h1>
 
-<div id="user_mistakes">
-  <% @user_mistakes.each do |user_mistake| %>
-    <%= render user_mistake %>
-    <p>
-      <%= link_to "Show this user mistake", user_mistake %>
-    </p>
-  <% end %>
+<table class='table table-striped' id='user_mistakes_table' data-source='<%= user_mistakes_url(format: :json) %>'>
+    <thead>
+      <th>ID</th>
+      <th>User</th>
+      <th>Mistake</th>
+      <th>Created At</th>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+  <button class='btn btn-outline-danger'><%= link_to "Log a Mistake", new_user_mistake_path %></button>
 </div>
-
-<%= link_to "New user mistake", new_user_mistake_path %>

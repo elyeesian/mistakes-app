@@ -14,12 +14,13 @@
   <div class="row">
       <div class="col-sm-4">
         <%= form.label "Select a User:", class: "form-label"%>
-        <%= form.collection_select :user_id, User.all, :id, :name, class: "form-control" %>
-        <%= form.label "Select an Error:", class: "form-label"%>
-        <%= form.collection_select :mistake_id, Mistake.all, :id, :name, class: "form-control" %>
+        <%= form.collection_select(:user_id, User.all, :id, :name, { prompt: "Who's the culprit?" },{class: "form-select"}) %>
+        <%= form.label "Select a Mistake:", class: "form-label"%>
+        <%= form.collection_select( :mistake_id, Mistake.all, :id, :name, { prompt: "What crimes?" },{class: "form-select"}) %>
       </div>
   </div>
   <div>
-    <%= form.submit %>
+    <%= form.submit "Submit", class: "btn btn-outline-danger"%>
+    <button class="btn btn-outline-danger"><%= link_to "Cancel", user_mistakes_path %></button>
   </div>
 <% end %>

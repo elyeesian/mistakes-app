@@ -4,6 +4,10 @@ class UserMistakesController < ApplicationController
   # GET /user_mistakes or /user_mistakes.json
   def index
     @user_mistakes = UserMistake.all
+    respond_to do |format|
+      format.html
+      format.json { render json: UserMistakesDatatable.new(view_context) }
+    end
   end
 
   # GET /user_mistakes/1 or /user_mistakes/1.json
@@ -25,7 +29,7 @@ class UserMistakesController < ApplicationController
 
     respond_to do |format|
       if @user_mistake.save
-        format.html { redirect_to user_mistake_url(@user_mistake), notice: "User mistake was successfully created." }
+        format.html { redirect_to user_mistakes_url, notice: "Mistake successfully logged." }
         format.json { render :show, status: :created, location: @user_mistake }
       else
         format.html { render :new, status: :unprocessable_entity }
